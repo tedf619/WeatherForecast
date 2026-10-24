@@ -63,10 +63,22 @@ Putting all the pieces together, the following figure shows how FormMain looks a
 
 ## How it Works
 
-The main form is used mainly to setup the layout and handle user interactions with the UI controls. The code deals primarily with two things:
+The main form is used mostly to setup the layout and handle user interactions with the UI controls. The code deals primarily with two things:
 
 1. Handling the **Search** button click. The app looks up cities that match the name entered and populates the ComboBox dropdown.
 2. Handling a selection from the dropdown list. The app downloads and displays the forecast data for the selected city.
+
+The following Sequence Diagram shows how the system processes a click on the **Search** button.
+
+<img width="713" height="423" alt="image" src="https://github.com/user-attachments/assets/b0f89f6a-bab0-488f-94be-5a873ad36c1f" />
+
+*Figure 7* - Fetching a list of cities matching a city name.
+
+The app looks up all the cities that match the search criteria and saves the list. When the user selects a specific city from the list, the system fetches and displays the weather for that city, as shown in the next Sequence Diagram.
+
+<img width="856" height="596" alt="image" src="https://github.com/user-attachments/assets/bb3c2943-a463-4977-a91f-6a0f69fa635e" />
+
+*Figure 8* - Fetching the weather data for a selected city.
 
 The following listing shows an excerpt of the **Search** button click code.
 
@@ -240,7 +252,7 @@ The icon at the top is contained in an ImageList initialized at runtime from a P
 
 <img width="705" height="100" alt="image" src="https://github.com/user-attachments/assets/e2a95d1e-05b6-4c58-af94-2d1408416c28" />
 
-*Figure 5* - The embedded resource containing all the weather icons.
+*Figure 9* - The embedded resource containing all the weather icons.
 
 The DailyConditions constructor calls LoadIconsIntoImageList which loads the PNG file and splits it into 8 separate bitmaps. Those bitmaps are then saved in a static ImageList. By being static, the ImageList is shared by all DailyConditions instances (but initialized only once).
 
